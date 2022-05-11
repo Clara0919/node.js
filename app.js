@@ -3,6 +3,7 @@ console.log("hello I'm clara");
 //內建模組
 const path = require('path'); //匯入模組
 const http = require('http');
+const url = require('url');
 
 //第三方模組
 
@@ -35,5 +36,7 @@ const server = http.createServer((req, res) => { //req:request res:response
 server.listen(3000, () => {
     console.log('running server on port 3000');
 });
+
+console.log(url.parse('https://www.youtube.com/watch?v=ssZTiB8yg94&t=43s'));//用來分析網址內含的狀態
 
 
