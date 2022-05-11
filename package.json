@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/Clara0919/node.js-0511/issues"
   },
-  "homepage": "https://github.com/Clara0919/node.js-0511#readme"
+  "homepage": "https://github.com/Clara0919/node.js-0511#readme",
+  "dependencies": {
+    "cowsay": "^1.5.0"
+  }
 }
