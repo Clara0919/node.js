@@ -13,3 +13,5 @@ module.exports = {
     title: "I'm Clara"
 
 }; //用物件方式比較好管理
+
+console.log('module', module);
