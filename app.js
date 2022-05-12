@@ -10,6 +10,8 @@ const express = require('express');
 
 const app = express();
 
+app.use(express.static(path.join(__dirname, 'public')));
+
 // middleware
 app.use((req, res, next) => {
     console.log('Hello!');
