@@ -67,7 +67,10 @@ app.get('/login', (req, res) => {
 
 app.get('*', (req, res) => {  //＊萬用路由 所有路徑都會匹配 所以要放在所有路由設定的最後面
     res.status(404)
-        .render('404');
+        .render('404', {
+            pageTitle: 'Book Your Books online'
+        });
+
     // .sendFile(path.join(__dirname, 'views', '404.html'));
 });
 

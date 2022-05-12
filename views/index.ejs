@@ -1,31 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>
-        <%= pageTitle %>
-    </title>
+<%- include('./includes/header') %>
     <link rel="stylesheet" href="/styles/main.css">
-</head>
+    </head>
 
-<body>
-    <h1>
-        <%= pageTitle %>
-    </h1>
-    <% if (products.length> 0) { %>
-        <!-- TODO: 使用迴圈跑出 products 資料 -->
-        <% products.forEach((product)=> { %>
-            <img src="<%= product.imageUrl %>" alt="<%= product.title %>">
-            <h3>
-                <%= product.title %>
-            </h3>
-            <% }) %>
-                <% } else { %>
-                    尚無商品
-                    <% } %>
-</body>
+    <body>
+        <h1>
+            <%= pageTitle %>
+        </h1>
+        <% if (products.length> 0) { %>
+            <!-- TODO: 使用迴圈跑出 products 資料 -->
+            <% products.forEach((product,productIndex)=> { %>
+                <img src="<%= product.imageUrl %>" alt="<%= product.title %>">
+                <h3>
+                    <%= product.title %>
+                </h3>
+                <p>
+                    <%= productIndex %>
+                </p>
+                <% }) %>
+                    <% } else { %>
+                        尚無商品
+                        <% } %>
+    </body>
 
-</html>
+    </html>
