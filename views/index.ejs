@@ -4,22 +4,32 @@
 
     <body>
         <%- include('./includes/navbar') %>
-            <h1>
-                <%= pageTitle %>
-            </h1>
-
-            <% if (products.length> 0) { %>
-                <!-- TODO: 使用迴圈跑出 products 資料 -->
-                <% products.forEach((product,productIndex)=> { %>
-                    <img src="<%= product.imageUrl %>" alt="<%= product.title %>">
-                    <h3>
-                        <%= product.title %>
-                    </h3>
-                    <p>
-                        <%= productIndex %>
-                    </p>
-                    <% }) %>
-                        <% } else { %>
-                            尚無商品
-                            <% } %>
-                                <%- include('./includes/footer') %>
+            <div class="container-md">
+                <h1>
+                    <%= pageTitle %>
+                </h1>
+                <div class="row">
+                    <% if (products.length> 0) { %>
+                        <!-- TODO: 使用迴圈跑出 products 資料 -->
+                        <% products.forEach((product)=> { %>
+                            <div class="col-12 col-md-6 col-lg-4 g-3">
+                                <div class="card h-100">
+                                    <img src="<%= product.imageUrl %>" class="card-img-top" alt="<%= product.title %>">
+                                    <div class="card-body">
+                                        <h5 class="card-title">
+                                            <%= product.title %>
+                                        </h5>
+                                        <p>
+                                            <%= product.description %>
+                                        </p>
+                                        <a href="#" class="btn btn-primary">詳細資訊</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <% }) %>
+                                <% } else { %>
+                                    尚無商品
+                                    <% } %>
+                                        <%- include('./includes/footer') %>
+                </div>
+            </div>
