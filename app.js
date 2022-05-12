@@ -10,8 +10,11 @@ const bodyParser = require('body-parser');
 ////////////////////////////////////////////////////////////////
 
 const app = express();
-app.use(bodyParser.urlencoded({ extended: false }));
 
+app.set('view engine', 'ejs');
+app.set('views', 'views'); // 預設路徑就是 views，如果沒有變動，可以省略此設定
+
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'publics')));
 
 // middleware
@@ -27,10 +30,22 @@ app.use((req, res, next) => {
 
 
 
-
 app.get('/', (req, res) => {
     res.status(200)
-        .sendFile(path.join(__dirname, 'views', 'index.html'));
+        .render('index');
+    // .sendFile(path.join(__dirname, 'views', 'index.html'));
+});
+
+app.get('/login', (req, res) => {
+    res.status(200)
+        .render('login');
+    // .sendFile(path.join(__dirname, 'views', 'login.html'));
+});
+
+app.get('*', (req, res) => {  //＊萬用路由 所有路徑都會匹配 所以要放在所有路由設定的最後面
+    res.status(404)
+        .render('404');
+    // .sendFile(path.join(__dirname, 'views', '404.html'));
 });
 
 
@@ -45,15 +60,7 @@ app.post('/login', (req, res) => {
 });
 
 
-app.get('/login', (req, res) => {
-    res.status(200)
-        .sendFile(path.join(__dirname, 'views', 'login.html'));
-});
 
-app.get('*', (req, res) => {  //＊萬用路由 所有路徑都會匹配 所以要放在所有路由設定的最後面
-    res.status(404)
-        .sendFile(path.join(__dirname, 'views', '404.html'));
-});
 
 app.listen(3000, () => {
     console.log('Web Server is running on port 3000');
