@@ -1,20 +1,24 @@
 {
-  "name": "node.js-0511",
+  "name": "20220511-node-js-playbook",
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon app.js"
+    "start": "nodemon app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Clara0919/node.js-0511.git"
+    "url": "git+https://github.com/tomasysh/20220511-node-js-playbook.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Clara0919/node.js-0511/issues"
+    "url": "https://github.com/tomasysh/20220511-node-js-playbook/issues"
+  },
+  "homepage": "https://github.com/tomasysh/20220511-node-js-playbook#readme",
+  "dependencies": {
+    "express": "^4.18.1"
   },
   "devDependencies": {
     "nodemon": "^2.0.16"
