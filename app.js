@@ -52,6 +52,7 @@ app.use((req, res, next) => {
 app.get('/', (req, res) => {
     res.status(200)
         .render('index', {
+            path: '/',
             pageTitle: 'Book Your Books online',
             products: products // 將常數 products 賦予給 路由參數 products
         });
@@ -60,6 +61,7 @@ app.get('/', (req, res) => {
 app.get('/login', (req, res) => {
     res.status(200)
         .render('login', {
+            path: '/login',
             pageTitle: 'Book Your Books online'
         });
 });
