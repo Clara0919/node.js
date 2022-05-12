@@ -25,6 +25,9 @@ app.use((req, res, next) => {
     next();
 });
 
+
+
+
 app.get('/', (req, res) => {
     res.status(200)
         .sendFile(path.join(__dirname, 'views', 'index.html'));
@@ -47,9 +50,16 @@ app.get('/login', (req, res) => {
         .sendFile(path.join(__dirname, 'views', 'login.html'));
 });
 
+app.get('*', (req, res) => {  //＊萬用路由 所有路徑都會匹配 所以要放在所有路由設定的最後面
+    res.status(404)
+        .sendFile(path.join(__dirname, 'views', '404.html'));
+});
+
 app.listen(3000, () => {
     console.log('Web Server is running on port 3000');
 });
+
+
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.urlencoded({ extended: false }));
