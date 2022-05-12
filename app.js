@@ -29,6 +29,19 @@ app.use((req, res, next) => {
 });
 
 
+app.get('/', (req, res) => {
+    res.status(200)
+        .render('index', {
+            pageTitle: 'Book Your Books online'
+        });
+});
+
+app.get('/login', (req, res) => {
+    res.status(200)
+        .render('login', {
+            pageTitle: 'Book Your Books online'
+        });
+});
 
 app.get('/', (req, res) => {
     res.status(200)
