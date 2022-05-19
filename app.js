@@ -7,12 +7,18 @@ const express = require('express');
 // 第三個區塊 自建模組
 const bodyParser = require('body-parser');
 const authRoutes = require('./routes/auth');
+const shopRoutes = require('./routes/shop');
+const errorRoutes = require('./routes/404');
 
 ////////////////////////////////////////////////////////////////
 
 
 const app = express();
+
 app.use(authRoutes);
+app.use(shopRoutes);
+app.use(errorRoutes);
+
 const products = [
     {
         title: '四月是你的謊言 1',
