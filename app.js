@@ -12,6 +12,7 @@ const errorRoutes = require('./routes/404');
 const Sequelize = require('sequelize');
 const database = require('./utils/database');
 const Product = require('./models/product');
+const User = require('./models/user');
 ////////////////////////////////////////////////////////////////
 
 
@@ -84,8 +85,9 @@ app.get('*', (req, res) => {  //＊萬用路由 所有路徑都會匹配 所以�
 
 
 database
-    .sync({ force: true })//強制重設資料庫
+    .sync()//{ force: true }強制重設資料庫
     .then((result) => {
+        User.create({ displayName: 'Admin', email: 'admin@skoob.com', password: '11111111' })
         Product.bulkCreate(products);
         app.listen(3000, () => {
             console.log('Web Server is running on port 3000');

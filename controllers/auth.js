@@ -1,6 +1,6 @@
 const getLogin = (req, res) => {
     res.status(200)
-        .render('login', {
+        .render('auth/login', {  //在views下面開一個auth資料夾把login.ejs放進去
             path: '/login',
             pageTitle: 'Login'
         });
