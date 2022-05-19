@@ -6,10 +6,13 @@ const express = require('express');
 
 // 第三個區塊 自建模組
 const bodyParser = require('body-parser');
+const authRoutes = require('./routes/auth');
 
 ////////////////////////////////////////////////////////////////
 
+
 const app = express();
+app.use(authRoutes);
 const products = [
     {
         title: '四月是你的謊言 1',
@@ -58,13 +61,6 @@ app.get('/', (req, res) => {
         });
 });
 
-app.get('/login', (req, res) => {
-    res.status(200)
-        .render('login', {
-            path: '/login',
-            pageTitle: 'Book Your Books online'
-        });
-});
 
 
 app.get('*', (req, res) => {  //＊萬用路由 所有路徑都會匹配 所以要放在所有路由設定的最後面
@@ -78,15 +74,8 @@ app.get('*', (req, res) => {  //＊萬用路由 所有路徑都會匹配 所以�
 });
 
 
-app.post('/login', (req, res) => {
-    const { email, password } = req.body;
-    if (email && password) {
-        res.redirect('/');
-        console.log('login data', req.body);
-    } else {
-        console.log('欄位尚未填寫完成！')
-    }
-});
+
+
 
 
 
