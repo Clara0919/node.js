@@ -9,7 +9,8 @@ const bodyParser = require('body-parser');
 const authRoutes = require('./routes/auth');
 const shopRoutes = require('./routes/shop');
 const errorRoutes = require('./routes/404');
-
+const Sequelize = require('sequelize');
+const database = require('./utils/database');
 ////////////////////////////////////////////////////////////////
 
 
@@ -81,14 +82,16 @@ app.get('*', (req, res) => {  //＊萬用路由 所有路徑都會匹配 所以�
 
 
 
-
-
-
-
-
-app.listen(3000, () => {
-    console.log('Web Server is running on port 3000');
-});
+database
+    .sync()
+    .then((result) => {
+        app.listen(3000, () => {
+            console.log('Web Server is running on port 3000');
+        });
+    })
+    .catch((err) => {
+        console.log('create web server error: ', err);
+    });
 
 
 
