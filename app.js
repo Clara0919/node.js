@@ -11,6 +11,7 @@ const shopRoutes = require('./routes/shop');
 const errorRoutes = require('./routes/404');
 const Sequelize = require('sequelize');
 const database = require('./utils/database');
+const Product = require('./models/product');
 ////////////////////////////////////////////////////////////////
 
 
@@ -85,6 +86,7 @@ app.get('*', (req, res) => {  //＊萬用路由 所有路徑都會匹配 所以�
 database
     .sync()
     .then((result) => {
+        Product.bulkCreate(products);
         app.listen(3000, () => {
             console.log('Web Server is running on port 3000');
         });
