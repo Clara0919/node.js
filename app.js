@@ -18,6 +18,10 @@ const User = require('./models/user');
 
 const app = express();
 
+
+app.use(express.static(path.join(__dirname, 'public')));
+app.use(bodyParser.urlencoded({ extended: false }));
+
 app.use(authRoutes);
 app.use(shopRoutes);
 app.use(errorRoutes);
@@ -87,7 +91,7 @@ app.get('*', (req, res) => {  //＊萬用路由 所有路徑都會匹配 所以�
 database
     .sync()//{ force: true }強制重設資料庫
     .then((result) => {
-        User.create({ displayName: 'Admin', email: 'admin@skoob.com', password: '11111111' })
+        // User.create({ displayName: 'Admin', email: 'clara@skoob.com', password: '11111111' })
         Product.bulkCreate(products);
         app.listen(3000, () => {
             console.log('Web Server is running on port 3000');
@@ -97,8 +101,4 @@ database
         console.log('create web server error: ', err);
     });
 
-
-
-app.use(express.static(path.join(__dirname, 'public')));
-app.use(bodyParser.urlencoded({ extended: false }));
 
