@@ -84,7 +84,7 @@ app.get('*', (req, res) => {  //＊萬用路由 所有路徑都會匹配 所以�
 
 
 database
-    .sync()
+    .sync({ force: true })//強制重設資料庫
     .then((result) => {
         Product.bulkCreate(products);
         app.listen(3000, () => {
